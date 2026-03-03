@@ -1,0 +1,29 @@
+
+> ud-camping-gears@0.1.0 build
+> next build
+
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\Users\Inazawa Electronics\package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * C:\Users\Inazawa Electronics\Desktop\UD Camping Gears\package-lock.json
+
+▲ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 8.6s
+  Running TypeScript ...
+Failed to compile.
+
+./src/data/products.tsx:158:60
+Type error: Cannot find name 'Calendar'.
+
+[0m [90m 156 |[39m         specs[33m:[39m [
+ [90m 157 |[39m             { label[33m:[39m [32m"GROUP SIZE"[39m[33m,[39m value[33m:[39m [32m"1-4 People"[39m[33m,[39m icon[33m:[39m [33m<[39m[33mUsers[39m className[33m=[39m[32m"h-5 w-5"[39m [33m/[39m[33m>[39m }[33m,[39m
+[31m[1m>[22m[39m[90m 158 |[39m             { label[33m:[39m [32m"DURATION"[39m[33m,[39m value[33m:[39m [32m"1-7 Days"[39m[33m,[39m icon[33m:[39m [33m<[39m[33mCalendar[39m className[33m=[39m[32m"h-5 w-5"[39m [33m/[39m[33m>[39m }[33m,[39m
+ [90m     |[39m                                                            [31m[1m^[22m[39m
+ [90m 159 |[39m             { label[33m:[39m [32m"WEIGHT"[39m[33m,[39m value[33m:[39m [32m"0.8 kg"[39m[33m,[39m icon[33m:[39m [33m<[39m[33mWeight[39m className[33m=[39m[32m"h-5 w-5"[39m [33m/[39m[33m>[39m }[33m,[39m
+ [90m 160 |[39m             { label[33m:[39m [32m"CASE"[39m[33m,[39m value[33m:[39m [32m"Waterproof"[39m[33m,[39m icon[33m:[39m [33m<[39m[33mDroplets[39m className[33m=[39m[32m"h-5 w-5"[39m [33m/[39m[33m>[39m }[33m,[39m
+ [90m 161 |[39m         ][0m
+Next.js build worker exited with code: 1 and signal: null

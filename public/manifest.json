@@ -1,0 +1,23 @@
+{
+    "name": "UD Camping Gears",
+    "short_name": "UD Camping",
+    "description": "Premium camping gear rentals & sales in Sri Lanka.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#0b3c2e",
+    "icons": [
+        {
+            "src": "/tab-logo.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/tab-logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}
