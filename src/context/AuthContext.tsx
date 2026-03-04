@@ -52,10 +52,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
             setSession(currentSession);
             setUser(currentSession.user);
-
-            // Master Admin Fallback: Grant admin if DB says true OR if it matches the designated owner email
-            const isMasterAdmin = currentSession.user.email === 'abdullahmhr64@gmail.com';
-            setIsAdmin(profile?.is_admin || isMasterAdmin);
+            setIsAdmin(profile?.is_admin || false);
             setLoading(false);
         };
 
