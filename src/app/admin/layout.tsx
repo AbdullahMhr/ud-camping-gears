@@ -16,18 +16,21 @@ export default function AdminLayout({
     const [isChecking, setIsChecking] = useState(true);
 
     useEffect(() => {
+        let isMounted = true;
         // Allow public access to login page
         if (pathname === "/admin") {
-            setIsChecking(false);
+            if (isMounted) setIsChecking(false);
             return;
         }
 
         // Check if user is logged in and is specifically an Admin
         if (!session || !isAdmin) {
-            router.replace("/admin");
+            if (isMounted) router.replace("/admin");
         } else {
-            setIsChecking(false);
+            if (isMounted) setIsChecking(false);
         }
+
+        return () => { isMounted = false; };
     }, [pathname, router, session, isAdmin]);
 
     // Public Route (Login)

@@ -30,7 +30,7 @@ export default function ProductDetail() {
     const product = products.find((p) => p.id === id);
     const { addToCart } = useCart();
     const { showToast } = useToast();
-    const { user } = useAuth();
+    const { user, isAdmin } = useAuth();
 
     // Layout States
     const [mainImage, setMainImage] = useState("");
@@ -38,7 +38,7 @@ export default function ProductDetail() {
 
     // Set initial image when product loads
     useEffect(() => {
-        if (product && product.images.length > 0) {
+        if (product && product.images && product.images.length > 0) {
             setMainImage(product.images[0]);
         }
     }, [product]);
@@ -69,7 +69,7 @@ export default function ProductDetail() {
     const [reviewComment, setReviewComment] = useState("");
     const [dbReviews, setDbReviews] = useState<any[]>([]);
 
-    const isAdmin = user?.email === 'abdullahmhr64@gmail.com';
+
 
     const fetchReviews = async () => {
         if (!product) return;
@@ -245,7 +245,7 @@ export default function ProductDetail() {
                         </div>
                     </div>
 
-                    {product.images.length > 1 && (
+                    {product.images && product.images.length > 1 && (
                         <div className="grid grid-cols-4 gap-4">
                             {product.images.map((img, i) => (
                                 <div
@@ -315,7 +315,7 @@ export default function ProductDetail() {
                     </p>
 
                     <div className="grid grid-cols-2 gap-3 mb-6">
-                        {product.specs.map((spec) => (
+                        {product.specs && product.specs.map((spec) => (
                             <div key={spec.label} className="bg-white border border-gray-100 rounded-xl p-3 flex items-center gap-3 hover:shadow-sm transition-shadow">
                                 <div className="text-[#0b3c2e]">
                                     {iconMap[spec.icon] || <ShieldCheck className="h-5 w-5" />}
@@ -388,7 +388,13 @@ export default function ProductDetail() {
                                         type="date"
                                         min={new Date(new Date(startDate).getTime() + 86400000).toISOString().split('T')[0]}
                                         value={endDate}
-                                        onChange={(e) => setEndDate(e.target.value)}
+                                        onChange={(e) => {
+                                            if (e.target.value <= startDate) {
+                                                setEndDate(new Date(new Date(startDate).getTime() + 86400000).toISOString().split('T')[0]);
+                                            } else {
+                                                setEndDate(e.target.value);
+                                            }
+                                        }}
                                         className="w-full text-base font-bold text-[#0b3c2e] outline-none bg-transparent"
                                     />
                                     <span className="absolute right-3 top-1/2 -translate-y-1/2 bg-[#0b3c2e] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-md pointer-events-none">

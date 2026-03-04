@@ -78,7 +78,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         const resetTimer = () => {
             clearTimeout(inactivityTimeout);
             // Specifically target the Admin instance
-            if (user?.email === 'abdullahmhr64@gmail.com' || isAdmin) {
+            if (isAdmin) {
                 inactivityTimeout = setTimeout(async () => {
                     console.log("Admin session timed out due to inactivity.");
                     await signOut();
@@ -88,7 +88,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         };
 
         // Only attach generic heavyweight DOM listeners if we are actually an Admin
-        if (user?.email === 'abdullahmhr64@gmail.com' || isAdmin) {
+        if (isAdmin) {
             resetTimer(); // Init
 
             // Throttle the mousemove event attachment for performance, but generic attachment is usually fine for Admin-only panels

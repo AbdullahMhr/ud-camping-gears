@@ -8,12 +8,12 @@ import { useState } from "react";
 
 export default function AdminGalleryPage() {
     const { images, isLoading, deleteImage } = useGallery();
-    const { user } = useAuth();
+    const { user, isAdmin } = useAuth();
     const { showToast } = useToast();
     const [deletingId, setDeletingId] = useState<string | null>(null);
 
-    // Hardcoded safety net: only load interface if they are the designated admin
-    if (!user || user.email !== 'abdullahmhr64@gmail.com') {
+    // Safety net: only load interface if they hold admin privileges
+    if (!user || !isAdmin) {
         return (
             <div className="flex flex-col items-center justify-center p-20 text-center text-gray-400">
                 <AlertTriangle className="h-16 w-16 mb-4 text-orange-500 opacity-50" />

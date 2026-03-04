@@ -11,10 +11,14 @@ export default function AdminProductsPage() {
     const { showToast } = useToast();
     const [searchTerm, setSearchTerm] = useState("");
 
-    const handleDelete = (id: string) => {
+    const handleDelete = async (id: string) => {
         if (confirm("Are you sure you want to delete this product?")) {
-            deleteProduct(id);
-            showToast("Product deleted successfully", "success");
+            try {
+                await deleteProduct(id);
+                showToast("Product deleted successfully", "success");
+            } catch (error) {
+                showToast("Failed to delete product", "error");
+            }
         }
     };
 

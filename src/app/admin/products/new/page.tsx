@@ -18,10 +18,10 @@ export default function AddProductPage() {
             // Generate UUID natively for the new product matching postgres text id
             const newId = crypto.randomUUID();
 
-            const newProduct: Product = {
+            const newProduct = {
                 id: newId,
                 ...productData
-            };
+            } as Product;
 
             await addProduct(newProduct);
             showToast("Product added to Cloud successfully!", "success");

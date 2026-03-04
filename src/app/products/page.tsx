@@ -18,9 +18,9 @@ function ProductsContent() {
         .filter(p => p.isActive !== false)
         .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0))
         .filter(product =>
-            product.title.toLowerCase().includes(searchQuery) ||
-            product.description.toLowerCase().includes(searchQuery) ||
-            product.subtitle.toLowerCase().includes(searchQuery)
+            (product.title?.toLowerCase() || "").includes(searchQuery) ||
+            (product.description?.toLowerCase() || "").includes(searchQuery) ||
+            (product.subtitle?.toLowerCase() || "").includes(searchQuery)
         );
 
     return (
